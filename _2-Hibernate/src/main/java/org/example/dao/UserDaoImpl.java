@@ -83,7 +83,7 @@ public class UserDaoImpl implements UserDao {
             }
             session.remove(user);
             tx.commit();
-            log.info("Удалён пользователь с id=", id);
+            log.info("Удалён пользователь с id={}", id);
             return true;
         } catch (Exception e) {
             if (tx != null) tx.rollback();
