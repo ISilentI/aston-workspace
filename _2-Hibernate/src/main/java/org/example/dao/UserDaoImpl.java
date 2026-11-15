@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao {
             User user = session.get(User.class, id);
             return Optional.ofNullable(user);
         } catch (Exception e) {
-            log.error("Ошибка при поиске пользователя по id=", id, e);
+            log.error("Ошибка при поиске пользователя по id={}", id, e);
             throw new DaoException("Не удалось найти пользователя.", e);
         }
     }
@@ -65,7 +65,7 @@ public class UserDaoImpl implements UserDao {
             return merged;
         } catch (Exception e) {
             if (tx != null) tx.rollback();
-            log.error("Ошибка при обновлении пользователя id=", user.getId(), e);
+            log.error("Ошибка при обновлении пользователя id={}", user.getId(), e);
             throw new DaoException("Не удалось обновить пользователя.", e);
         }
     }
@@ -78,7 +78,7 @@ public class UserDaoImpl implements UserDao {
             User user = session.get(User.class, id);
             if (user == null) {
                 tx.commit();
-                log.warn("Пользователь не найден для удаления id=", id);
+                log.warn("Пользователь не найден для удаления id={}", id);
                 return false;
             }
             session.remove(user);
@@ -87,7 +87,7 @@ public class UserDaoImpl implements UserDao {
             return true;
         } catch (Exception e) {
             if (tx != null) tx.rollback();
-            log.error("Ошибка при удалении пользователя id=", id, e);
+            log.error("Ошибка при удалении пользователя id={}", id, e);
             throw new DaoException("Не удалось удалить пользователя.", e);
         }
     }
