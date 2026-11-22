@@ -87,8 +87,8 @@ class UserServiceUnit {
 
     @Test
     void getAllUsers_ReturnList() {
-        User user1 = new User("A", "a@a.com", 1);
-        User user2 = new User("B", "b@b.com", 2);
+        User user1 = new User("user1", "user1@gmail.com", 11);
+        User user2 = new User("user2", "user2@gmail.com", 22);
         when(userDao.findAll()).thenReturn(List.of(user1, user2));
 
         List<User> result = userService.getAllUsers();
