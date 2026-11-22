@@ -53,14 +53,11 @@ public class App {
                     case "0" -> running = false;
                     default -> System.out.println("Ошибка выбора.");
                 }
-            } catch (IllegalArgumentException e) {
-                System.err.println("Ошибка данных: " + e.getMessage());
-                log.warn("Ошибка валидации: {}", e.getMessage());
             } catch (DaoException e) {
-                System.err.println("Ошибка базы данных: " + e.getMessage());
+                System.err.println(e.getMessage());
                 log.error("DaoException", e);
             } catch (Exception e) {
-                System.err.println("Непредвиденная ошибка: " + e.getMessage());
+                System.err.println(e.getMessage());
                 log.error("Непредвиденная ошибка", e);
             }
         }
@@ -104,7 +101,7 @@ public class App {
     private void findAllUsers() {
         List<User> users = userService.getAllUsers();
         if (users.isEmpty()) {
-            System.out.println("Список пуст.");
+            System.out.println("Список пользователей пуст.");
         } else {
             System.out.println("Всего пользователей: " + users.size());
             users.forEach(System.out::println);
@@ -130,7 +127,7 @@ public class App {
     }
 
     private void deleteUser() {
-        System.out.println("ID пользователя: ");
+        System.out.println("ID пользователя для удаления: ");
         long id = Long.parseLong(scanner.nextLine().trim());
         boolean deleted = userService.deleteUser(id);
         if (deleted) {
