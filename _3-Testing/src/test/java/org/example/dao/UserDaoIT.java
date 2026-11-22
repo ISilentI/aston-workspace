@@ -83,7 +83,7 @@ class UserDaoIT {
 
     @Test
     void testUpdate() {
-        User user = userDao.create(new User("Владимир", "vladmir@mail.ru", 47));
+        User user = userDao.create(new User("Валдимир", "vladmir@mail.ru", 47));
         user.setName("Владимир");
         user.setAge(48);
 
