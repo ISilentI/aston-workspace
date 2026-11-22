@@ -84,11 +84,11 @@ class UserDaoIT {
     @Test
     void testUpdate() {
         User user = userDao.create(new User("Владимир", "vladmir@mail.ru", 47));
-        user.setName("Владимир обновлен");
+        user.setName("Владимир");
         user.setAge(48);
 
         User updated = userDao.update(user);
-        assertEquals("Владимир обновлен", updated.getName());
+        assertEquals("Владимир", updated.getName());
         assertEquals(48, updated.getAge());
     }
 
