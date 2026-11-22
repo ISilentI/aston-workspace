@@ -76,15 +76,15 @@ public class App {
         System.out.println("4. Обновить пользователя");
         System.out.println("5. Удалить пользователя");
         System.out.println("0. Выход");
-        System.out.print("Выберите действие: ");
+        System.out.println("Выберите действие: ");
     }
 
     private void createUser() {
-        System.out.print("Имя: ");
+        System.out.println("Имя: ");
         String name = scanner.nextLine().trim();
-        System.out.print("Email: ");
+        System.out.println("Email: ");
         String email = scanner.nextLine().trim();
-        System.out.print("Возраст: ");
+        System.out.println("Возраст: ");
         int age = Integer.parseInt(scanner.nextLine().trim());
 
         User created = userService.createUser(name, email, age);
@@ -92,11 +92,11 @@ public class App {
     }
 
     private void findUserById() {
-        System.out.print("Введите ID: ");
+        System.out.println("Введите ID: ");
         long id = Long.parseLong(scanner.nextLine().trim());
         Optional<User> user = userService.getUserById(id);
         user.ifPresentOrElse(
-                u -> System.out.println("Найден: " + u),
+                us -> System.out.println("Найден: " + us),
                 () -> System.out.println("Пользователь с ID " + id + " не найден.")
         );
     }
@@ -104,7 +104,7 @@ public class App {
     private void findAllUsers() {
         List<User> users = userService.getAllUsers();
         if (users.isEmpty()) {
-            System.out.println("Список пользователей пуст.");
+            System.out.println("Список пуст.");
         } else {
             System.out.println("Всего пользователей: " + users.size());
             users.forEach(System.out::println);
@@ -112,16 +112,16 @@ public class App {
     }
 
     private void updateUser() {
-        System.out.print("ID пользователя для обновления: ");
+        System.out.println("ID пользователя: ");
         long id = Long.parseLong(scanner.nextLine().trim());
 
-        System.out.print("Новое имя (Enter - пропустить): ");
+        System.out.println("Имя: ");
         String name = scanner.nextLine().trim();
 
-        System.out.print("Новый email (Enter - пропустить): ");
+        System.out.println("Email: ");
         String email = scanner.nextLine().trim();
 
-        System.out.print("Новый возраст (Enter - пропустить): ");
+        System.out.println("Возраст: ");
         String ageStr = scanner.nextLine().trim();
         Integer age = ageStr.isEmpty() ? null : Integer.parseInt(ageStr);
 
@@ -130,7 +130,7 @@ public class App {
     }
 
     private void deleteUser() {
-        System.out.print("ID пользователя для удаления: ");
+        System.out.println("ID пользователя: ");
         long id = Long.parseLong(scanner.nextLine().trim());
         boolean deleted = userService.deleteUser(id);
         if (deleted) {
