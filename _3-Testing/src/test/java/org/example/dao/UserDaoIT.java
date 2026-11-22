@@ -94,7 +94,7 @@ class UserDaoIT {
 
     @Test
     void testDelete() {
-        User user = userDao.create(new User("Всеволод", "vsevo@bk.", 28));
+        User user = userDao.create(new User("Всеволод", "vsevo@bk.ru", 28));
         boolean deleted = userDao.deleteById(user.getId());
         assertTrue(deleted);
         assertTrue(userDao.findById(user.getId()).isEmpty());
