@@ -21,6 +21,7 @@
 # 3. Тестирвание UserServiceUnit - юнит-тесты с Mockito (бизнес-логика):
 ![4](src/main/content/4.PNG)
 # 4. Изоляция тестов:
+![5](src/main/content/5.PNG)
 # 5. Добавленные зависимости фрейморвка и библиотек:
 ![6](src/main/content/6.PNG)
 
