@@ -28,15 +28,15 @@ class UserServiceUnit {
 
     @Test
     void createUser_ReturnCreatedUser() {
-        User expectedUser = new User("Анджелика", "angeli@bk.ru", 36);
+        User expectedUser = new User("Анжелика", "angeli@bk.ru", 36);
         expectedUser.setId(1L);
         expectedUser.setCreatedAt(LocalDateTime.now());
         when(userDao.create(any(User.class))).thenReturn(expectedUser);
 
-        User result = userService.createUser("Анджелика", "angeli@bk.ru", 36);
+        User result = userService.createUser("Анжелика", "angeli@bk.ru", 36);
 
         assertNotNull(result);
-        assertEquals("Анджелика", result.getName());
+        assertEquals("Анжелика", result.getName());
         verify(userDao, times(1)).create(any(User.class));
     }
 
@@ -51,7 +51,7 @@ class UserServiceUnit {
     @Test
     void createUser_InvalidEmail_ThrowException() {
         assertThrows(IllegalArgumentException.class, () -> {
-            userService.createUser("Анджелика", "vladi", 36);
+            userService.createUser("Анжелика", "vladi", 36);
         });
         verify(userDao, never()).create(any(User.class));
     }
@@ -59,7 +59,7 @@ class UserServiceUnit {
     @Test
     void createUser_NegativeAge_ThrowException() {
         assertThrows(IllegalArgumentException.class, () -> {
-            userService.createUser("Анджелика", "angeli@bk.ru", -36);
+            userService.createUser("Анжелика", "angeli@bk.ru", -36);
         });
         verify(userDao, never()).create(any(User.class));
     }
@@ -87,8 +87,8 @@ class UserServiceUnit {
 
     @Test
     void getAllUsers_ReturnList() {
-        User user1 = new User("A", "a@a.com", 20);
-        User user2 = new User("B", "b@b.com", 21);
+        User user1 = new User("A", "a@a.com", 1);
+        User user2 = new User("B", "b@b.com", 2);
         when(userDao.findAll()).thenReturn(List.of(user1, user2));
 
         List<User> result = userService.getAllUsers();

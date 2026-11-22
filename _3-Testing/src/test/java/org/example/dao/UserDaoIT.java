@@ -60,11 +60,11 @@ class UserDaoIT {
 
     @Test
     void testCreateAndFindById() {
-        User user = new User("Анджелика", "angeli@bk.ru", 36);
+        User user = new User("Анжелика", "angeli@bk.ru", 36);
         User created = userDao.create(user);
 
         assertNotNull(created.getId());
-        assertEquals("Анджелика", created.getName());
+        assertEquals("Анжелика", created.getName());
         assertNotNull(created.getCreatedAt());
 
         Optional<User> found = userDao.findById(created.getId());
